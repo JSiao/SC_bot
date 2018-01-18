@@ -1,0 +1,10 @@
+{
+  "name": "Soundcloud-bot",
+  "version": "0.0.1",
+  "description": "Soundcloud Jukebox for Discord",
+  "main": "bot.js",
+  "author": "Justin Siao",
+  "dependencies": {
+    "winston": "^2.4.0"
+  }
+}
