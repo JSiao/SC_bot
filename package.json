@@ -5,6 +5,20 @@
   "main": "bot.js",
   "author": "Justin Siao",
   "dependencies": {
+    "bufferutil": "^3.0.3",
+    "discord.io": "^2.5.3",
+    "discord.js": "^11.3.0",
+    "erlpack": "^0.1.2",
+    "libsodium-wrappers": "^0.7.3",
+    "node-opus": "^0.2.7",
+    "opusscript": "0.0.6",
+    "uws": "^9.14.0",
     "winston": "^2.4.0"
+  },
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "devDependencies": {
+    "npm-start-command": "^0.2.0"
   }
 }
