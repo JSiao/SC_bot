@@ -8,7 +8,11 @@ logger.add(logger.transports.Console, {
 });
 logger.level = 'debug';
 
-var bot = new Discord.Client();
+var bot = new Discord.Client(
+{
+    token: auth.token,
+    autorun: true
+});
 const token = process.env.TOKEN;
 
 bot.on('ready', function (evt)
@@ -38,5 +42,3 @@ bot.on('message', function (user, userID, channelID, message, evt)
         }
     }
 });
-
-bot.login(token);
