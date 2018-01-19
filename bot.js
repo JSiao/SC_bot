@@ -105,7 +105,7 @@ function app_echo(message)
     args.shift();
     for (x = 1; x < args.length; x++)
     {
-        if (args[x].startsWith("%"))
+        if (args[x].startsWith('%'))
         {
             logger.info(args[x] + " is a variable");
             for (x = 0; x < global_array.length; x++)
