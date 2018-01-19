@@ -38,7 +38,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
     {
         var args = message.substring(1).split(' ');
         cmd = args[0];
-        args = args.splice(1);
+//      args = args.splice(1);
         switch(cmd)
         {
             case 'hello':
@@ -50,6 +50,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                 );
                 break;
             case 'roll':
+                logger.info("Argument [0] = " + args[0] + "\nArgument [1] = " + args[1]);
                 app_roll(args[1]);
                 break;
         }
