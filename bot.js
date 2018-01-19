@@ -107,12 +107,14 @@ function app_echo(message)
     {
         if (args[x].startsWith("%"))
         {
+            logger.info(args[x] + " is a variable");
             for (x = 0; x < global_array.length; x++)
             {
                 if (("%" + global_array[x].name) == args[x])
                 {
                     args[x] = global_array[x].value;
                 }
+                logger.info("%" + global_array[x].name + " = " global_array[x].value);
             }
         }
     }
