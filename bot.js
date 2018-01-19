@@ -76,7 +76,7 @@ function app_roll(args)
     var dice = args[1];
     var nums = dice.split('d', 1);
     if (nums[0] == "") nums[0] = 1;
-    var array;
+    var array = [];
     var sum = 0;
     for (h = 0; h < nums[0]; h++)
     {
