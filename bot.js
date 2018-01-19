@@ -88,15 +88,16 @@ function app_roll(message)
             sum += r;
             logger.info("r = " + r);
         }
-        message.reply( "Roll = " + sum);
+        message.channel.send( "Roll = " + sum);
     }
 }
 
 function app_echo(message)
 {
     const args = message.content.slice('$').trim().split(/ +/g);
+    args.shift();
     const Msg  = args.join(" ");
-    message.reply(Msg);
+    message.channel.send(Msg);
 }
 
 function app_help(message)
