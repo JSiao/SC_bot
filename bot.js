@@ -29,26 +29,23 @@ bot.on('ready',  () =>
 bot.on('message', async message =>
 {
     if (message.author.bot) return;
-    if (message.substring(0, 1) == '$')
+    const args = message.content.slice(/ $/g);
+    logger.info(args);
+    const cmd  = args.shift();
+    switch(cmd)
     {
-        const args = message.content.slice(/ $/g);
-        logger.info(args);
-        const cmd  = args.shift();
-        switch(cmd)
-        {
-            case 'echo':
-                app_echo(message);
-                break;
-            case 'help':
-                app_help(args, message);
-                break;
-            case 'hello':
-                message.reply('Yo!');
-                break;
-            case 'roll':
-                app_roll(message);
-                break;
-        }
+        case 'echo':
+            app_echo(message);
+            break;
+        case 'help':
+            app_help(args, message);
+            break;
+        case 'hello':
+            message.reply('Yo!');
+            break;
+        case 'roll':
+            app_roll(message);
+            break;
     }
 /*
     if (message.content.startsWith('$hello'))
