@@ -49,7 +49,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                 );
                 break;
             case 'roll':
-                app_roll(message);
+                app_roll(message.content);
                 break;
         }
     }
@@ -71,7 +71,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
 
 function app_roll(message)
 {
-    var pos = message.content.indexOf(' ');
+    var pos = content.indexOf(' ');
     var dice = message.content.slice(pos+1, message.content.length);
     var nums = dice.split('d', 1);
     if (nums[0] == "") nums[0] = 1;
