@@ -62,7 +62,7 @@ function app_roll(arg)
     if (nums[0] = "") nums[0] = 1;
     var array;
     var sum = 0;
-    for (int h = 0; h < nums[0]; h++)
+    for (h = 0; h < nums[0]; h++)
     {
         sum += array[h] = Math.round(Math.random() * nums[1]);
     }
