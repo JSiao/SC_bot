@@ -33,16 +33,16 @@ bot.on('message', async message =>
     const cmd  = args.shift();
     switch(cmd)
     {
-        case 'echo':
+        case '$echo':
             app_echo(message);
             break;
-        case 'help':
+        case '$help':
             app_help(args, message);
             break;
-        case 'hello':
+        case '$hello':
             message.reply('Yo!');
             break;
-        case 'roll':
+        case '$roll':
             app_roll(message);
             break;
     }
@@ -64,7 +64,7 @@ bot.on('message', async message =>
 
 function app_roll(message)
 {
-    var args = message.substring(1).split(' ');
+    const args = message.content.slice('$').trim().split(/ +/g);
     logger.info(args);
     if (args.length < 2)
     {
