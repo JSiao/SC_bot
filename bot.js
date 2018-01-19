@@ -58,7 +58,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
 
 function app_roll(arg)
 {
-    var nums = arg.split(/d| /, 1);
+    var nums = arg.split('d', 1);
     if (nums[0] = "") nums[0] = 1;
     var array;
     var sum = 0;
