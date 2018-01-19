@@ -69,7 +69,7 @@ function app_roll(message)
     if (args.length < 2)
     {
         let val = Math.ceil(Math.random() * 6);
-        message.reply( "Roll = " + val);
+        message.channel.send( "Roll = " + val);
     }
     else
     {
@@ -110,7 +110,7 @@ function app_help(message)
         .setTimestamp()
         .addField('$roll [dice]', 'Rolls that given type of dice')
         .addField('$echo [...]', 'Echoes to output') ;
-    message.channel.send({embed});
+    message.channel.send(embed);
 }
 
 bot.login(token);
