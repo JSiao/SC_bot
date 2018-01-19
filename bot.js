@@ -18,7 +18,7 @@ SC.init({
 });
 */
 
-const token = process.env.TOKEN;
+const token = auth.token;
 
 bot.on('ready',  () =>
 {
