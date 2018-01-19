@@ -74,7 +74,7 @@ function app_roll(args, channelID)
 {
     logger.info(args);
     var dice = args[1];
-    var nums = dice.split('d', 1);
+    var nums = dice.split('d', 2);
     if (nums[0] == "") nums[0] = 1;
     var array = [];
     var sum = 0;
