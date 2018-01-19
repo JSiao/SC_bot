@@ -85,7 +85,7 @@ function app_roll(args, channelID)
     bot.sendMessage(
     {
         to: channelID,
-        message: sum
+        message: "Roll = " + sum
     }
     );
 }
