@@ -26,13 +26,14 @@ bot.on('ready',  () =>
     logger.info('Logged in as: ');
 });
 
-bot.on('message', async (message) =>
+bot.on('message', async message =>
 {
+    if (message.author.bot) return;
     if (message.substring(0, 1) == '$')
     {
-        var args = message.substring(1).split(' ');
+        const args = message.content.slice(/ $/g);
         logger.info(args);
-        cmd  = args[0];
+        const cmd  = args.shift();
         switch(cmd)
         {
             case 'echo':
