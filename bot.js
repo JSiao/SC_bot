@@ -57,15 +57,15 @@ bot.on('message', function (user, userID, channelID, message, evt)
         }
     }
 */
-    if (message.content.startswith('$hello'))
+    if (message.content.startsWith('$hello'))
     {
         message.reply("Hello!");
     }
-    else if (message.content.startswith('$help'))
+    else if (message.content.startsWith('$help'))
     {
         app_help(message);
     }
-    else if (message.content.startswith('$roll'))
+    else if (message.content.startsWith('$roll'))
     {
         app_roll(message);
     }
