@@ -118,3 +118,5 @@ function app_help(message)
         ;
     message.channel.send({embed});
 }
+
+bot.login(token);
