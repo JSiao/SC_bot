@@ -93,7 +93,6 @@ function app_roll(message)
             logger.info("r = " + r);
         }
         message.reply( "Roll = " + sum);
-        );
     }
 }
 
