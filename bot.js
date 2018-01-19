@@ -34,6 +34,7 @@ bot.on('ready', function (evt)
 
 bot.on('message', function (user, userID, channelID, message, evt)
 {
+/*
     if (message.substring(0, 1) == '$')
     {
         var args = message.split(' ');
@@ -55,12 +56,27 @@ bot.on('message', function (user, userID, channelID, message, evt)
                 break;
         }
     }
+*/
+    if (message.content.startswith('$hello'))
+    {
+        message.reply("Hello!");
+    }
+    else if (message.content.startswith('$help'))
+    {
+        app_help(message);
+    }
+    else if (message.content.startswith('$roll'))
+    {
+        app_roll(message);
+    }
 });
 
-function app_roll(arg)
+function app_roll(message)
 {
-    var nums = arg.split('d', 1);
-    if (nums[0] = "") nums[0] = 1;
+    var pos = message.content.indexOf(' ');
+    var dice = message.content.slice(pos+1, message.content.length);
+    var nums = dice.split('d', 1);
+    if (nums[0] == "") nums[0] = 1;
     var array;
     var sum = 0;
     for (h = 0; h < nums[0]; h++)
