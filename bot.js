@@ -50,8 +50,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                 );
                 break;
             case 'roll':
-                logger.info(message.content);
-                app_roll(message.content);
+                app_roll(args);
                 break;
         }
     }
@@ -71,10 +70,10 @@ bot.on('message', function (user, userID, channelID, message, evt)
 */
 });
 
-function app_roll(content)
+function app_roll(args)
 {
-    var pos = content.indexOf(' ');
-    var dice = content.slice(pos+1, content.length);
+    logger.info(args);
+    var dice = args[1];
     var nums = dice.split('d', 1);
     if (nums[0] == "") nums[0] = 1;
     var array;
