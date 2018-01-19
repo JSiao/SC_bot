@@ -102,13 +102,13 @@ function app_echo(message)
 function app_help(message)
 {
     const embed = new Discord.RichEmbed()
-        .setAuthor("Commands", client.user.avatarURL)
-        .setDescription("Help")
+        .setTitle("Command List")
+        .setAuthor("Mr. Mar", client.user.avatarURL)
+        .setDescription("One of you bastards asked for help")
         .setColor(0x00ff00)
         .setTimestamp()
         .addField('$roll [dice]', 'Rolls that given type of dice')
-        .addField('$echo [...]', 'Echoes to output')
-        ;
+        .addField('$echo [...]', 'Echoes to output') ;
     message.channel.send({embed});
 }
 
