@@ -133,9 +133,9 @@ function app_help(message)
 {
     const embed = new Discord.RichEmbed()
         .setAuthor("Commands", client.user.avatarURL)
-        .setDescription("Help");
-        .setColor(0x00ff00);
-        .setTimestamp();
+        .setDescription("Help")
+        .setColor(0x00ff00)
+        .setTimestamp()
         .addField('$roll [dice]', 'Rolls that given type of dice')
         .addField('$echo [...]', 'Echoes to output')
         ;
