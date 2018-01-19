@@ -34,15 +34,13 @@ bot.on('ready', function (evt)
 
 bot.on('message', function (user, userID, channelID, message, evt)
 {
-/*
     if (message.substring(0, 1) == '$')
     {
-        var args = message.split(' ');
+        var args = message.substring(1).split(' ');
         cmd  = args[0];
-        //args = args.splice(2);
         switch(cmd)
         {
-            case '$hello':
+            case 'hello':
                 bot.sendMessage(
                 {
                     to: channelID,
@@ -50,13 +48,12 @@ bot.on('message', function (user, userID, channelID, message, evt)
                 }
                 );
                 break;
-            case '$roll':
-                logger.info("Argument [0] = " + args[0] + "\nArgument [1] = " + args[1]);
+            case 'roll':
                 app_roll(args[1]);
                 break;
         }
     }
-*/
+/*
     if (message.content.startsWith('$hello'))
     {
         message.reply("Hello!");
@@ -69,6 +66,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
     {
         app_roll(message);
     }
+*/
 });
 
 function app_roll(message)
