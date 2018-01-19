@@ -78,6 +78,7 @@ function app_roll(args, channelID)
     if (nums[0] == "") nums[0] = 1;
     var array = [];
     var sum = 0;
+    nums[1] = parseInt(nums[1]);
     for (h = 0; h < nums[0]; h++)
     {
         sum += Math.round(Math.random() * nums[1]);
