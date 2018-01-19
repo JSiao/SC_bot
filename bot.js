@@ -23,13 +23,12 @@ const token = auth.token;
 bot.on('ready',  () =>
 {
     logger.info('I have taken Command! Hahahaha');
-    logger.info('Logged in as: ');
 });
 
 bot.on('message', async message =>
 {
     if (message.author.bot) return;
-    const args = message.content.slice(/ $/g);
+    const args = message.content.slice('$').trim().split(/ +/g);
     logger.info(args);
     const cmd  = args.shift();
     switch(cmd)
