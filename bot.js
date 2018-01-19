@@ -103,6 +103,19 @@ function app_echo(message)
 {
     const args = message.content.slice('$').trim().split(/ +/g);
     args.shift();
+    for (x = 1; x < args.length; x++)
+    {
+        if (args[x].startsWith("%"))
+        {
+            for (x = 0; x < global_array.length; x++)
+            {
+                if (("%" + global_array[x].name) == args[x])
+                {
+                    args[x] = global_array[x].value;
+                }
+            }
+        }
+    }
     const Msg  = args.join(" ");
     message.channel.send(Msg);
 }
