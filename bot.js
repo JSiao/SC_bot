@@ -45,8 +45,15 @@ bot.on('message', async message =>
     switch(cmd)
     {
         case '$clear':
-            global_array = [];
-            message.channel.send("All Variables cleared");
+            if (global_array.length > 0)
+            {
+                global_array = [];
+                message.channel.send("All Variables cleared");
+            }
+            else
+            {
+                message.channel.send("No Variables to clear");
+            }
             break;
         case '$display':
             app_display(message);
@@ -103,7 +110,8 @@ function app_echo(message)
 {
     const args = message.content.slice('$').trim().split(/ +/g);
     args.shift();
-    for (x = 1; x < args.length; x++)
+    logger.info(args);
+    for (x = 0; x < args.length; x++)
     {
         if (args[x].startsWith('%'))
         {
@@ -161,6 +169,7 @@ function app_rem(message)
 
 function app_display(message)
 {
+    logger.info(global_array);
     let msg = "";
     for (x = 0; x < global_array.length; x++)
     {
