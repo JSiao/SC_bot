@@ -20,6 +20,17 @@ SC.init({
 
 const token = auth.token;
 
+var global_array = [];
+
+class BigVar
+{
+    constructor(name, value)
+    {
+        this.name = name;
+        this.value = value;
+    }
+}
+
 bot.on('ready',  () =>
 {
     logger.info('I have taken Command! Hahahaha');
@@ -33,6 +44,13 @@ bot.on('message', async message =>
     const cmd  = args.shift();
     switch(cmd)
     {
+        case '$clear':
+            global_array = [];
+            message.channel.send("All Variables cleared");
+            break;
+        case '$display':
+            app_display(message);
+            break;
         case '$echo':
             app_echo(message);
             break;
@@ -42,24 +60,13 @@ bot.on('message', async message =>
         case '$hello':
             message.reply('Yo!');
             break;
+        case '$rem':
+            app_rem(message);
+            break;
         case '$roll':
             app_roll(message);
             break;
     }
-/*
-    if (message.content.startsWith('$hello'))
-    {
-        message.reply("Hello!");
-    }
-    else if (message.content.startsWith('$help'))
-    {
-        app_help(message);
-    }
-    else if (message.content.startsWith('$roll'))
-    {
-        app_roll(message);
-    }
-*/
 });
 
 function app_roll(message)
@@ -103,6 +110,48 @@ function app_echo(message)
 function app_help(message)
 {
     message.channel.send( "Command List \n$roll [dice] - Rolls that given type of dice\n$echo [...] - Echoes to output");
+}
+
+function app_rem(message)
+{
+    const args = message.content.slice('$').trim().split(/ +/g);
+    if (args.length < 3) 
+    {
+        message.channel.send("Wow, you tottaly got that wrong, dude.");
+        return;
+    }
+    cmd = args.shift();
+    variable = args.shift();
+    value    = args.shift();
+    if (!isNaN(variable))
+    {
+        value = Number(value);
+    }
+    var flag = false;
+    for (x = 0; x < global_array.length; x++)
+    {
+        if (global_array[x].name = variable)
+        {
+            global_array[x].value = value;
+            flag = true;
+            break;
+        }
+    }
+    if (flag == false)
+    {
+        new Var = BigVar(variable, value);
+        global_array.splice(global_array.length, 0, Var);
+    }
+}
+
+function app_display(message)
+{
+    let msg = "";
+    for (x = 0; x < global_array.length; x++)
+    {
+        msg = msg + global_array[x].name + ": " + global_array[x].value + "\n";
+    }
+    message.channel.send(msg);
 }
 
 bot.login(token);
