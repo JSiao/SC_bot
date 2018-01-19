@@ -139,7 +139,7 @@ function app_rem(message)
     }
     if (flag == false)
     {
-        let Var = var BigVar(variable, value);
+        let Var = new BigVar(variable, value);
         global_array.splice(global_array.length, 0, Var);
     }
 }
