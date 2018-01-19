@@ -49,7 +49,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                 );
                 break;
             case 'roll':
-                app_roll(args[1]);
+                app_roll(message);
                 break;
         }
     }
