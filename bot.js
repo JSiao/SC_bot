@@ -114,7 +114,7 @@ function app_echo(message)
                 {
                     args[x] = global_array[x].value;
                 }
-                logger.info("%" + global_array[x].name + " = " global_array[x].value);
+                logger.info("%" + global_array[x].name + " = " + global_array[x].value);
             }
         }
     }
