@@ -22,9 +22,8 @@ const token = auth.token;
 
 bot.on('ready',  () =>
 {
-    logger.info('I am taken Command! Hahahaha');
+    logger.info('I have taken Command! Hahahaha');
     logger.info('Logged in as: ');
-    logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
 bot.on('message', async (message) =>
