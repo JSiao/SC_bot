@@ -20,7 +20,7 @@ SC.init({
 
 const token = process.env.TOKEN;
 
-bot.on('ready', function (evt)
+bot.on('ready',  () =>
 {
     logger.info('I am taken Command! Hahahaha');
     logger.info('Logged in as: ');
