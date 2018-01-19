@@ -153,7 +153,7 @@ function app_rem(message)
     var flag = false;
     for (x = 0; x < global_array.length; x++)
     {
-        if (global_array[x].name = variable)
+        if (global_array[x].name == variable)
         {
             global_array[x].value = value;
             flag = true;
