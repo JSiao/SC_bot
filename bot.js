@@ -80,7 +80,7 @@ function app_roll(args, channelID)
     var sum = 0;
     for (h = 0; h < nums[0]; h++)
     {
-        sum += array[h] = Math.round(Math.random() * nums[1]);
+        sum += Math.round(Math.random() * nums[1]);
     }
     bot.sendMessage(
     {
