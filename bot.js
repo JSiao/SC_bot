@@ -80,8 +80,8 @@ function app_roll(args, channelID)
     var sum = 0;
     nums[0] = parseInt(nums[0]);
     nums[1] = parseInt(nums[1]);
-    logger.info("nums[0] = " nums[0]);
-    logger.info("nums[1] = " nums[1]);
+    logger.info("nums[0] = " + nums[0]);
+    logger.info("nums[1] = " + nums[1]);
     for (h = 0; h < nums[0]; h++)
     {
         let r = Math.round(Math.random() * nums[1]);
