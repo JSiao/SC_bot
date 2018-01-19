@@ -9,12 +9,7 @@ logger.add(logger.transports.Console, {
 });
 logger.level = 'debug';
 
-var bot = new Discord.Client(
-{
-    token: auth.token,
-    autorun: true
-});
-
+var bot = new Discord.Client(); 
 /*
 SC.init({
     id: '',
@@ -32,7 +27,7 @@ bot.on('ready', function (evt)
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
-bot.on('message', function (user, userID, channelID, message, evt)
+bot.on('message', async (message) =>
 {
     if (message.substring(0, 1) == '$')
     {
@@ -45,18 +40,13 @@ bot.on('message', function (user, userID, channelID, message, evt)
                 app_echo(message);
                 break;
             case 'help':
-                app_help(args, channelID);
+                app_help(args, message);
                 break;
             case 'hello':
-                bot.sendMessage(
-                {
-                    to: channelID,
-                    message: 'Yo!'
-                }
-                );
+                message.reply('Yo!');
                 break;
             case 'roll':
-                app_roll(args, channelID);
+                app_roll(message);
                 break;
         }
     }
@@ -76,17 +66,14 @@ bot.on('message', function (user, userID, channelID, message, evt)
 */
 });
 
-function app_roll(args, channelID)
+function app_roll(message)
 {
+    var args = message.substring(1).split(' ');
     logger.info(args);
     if (args.length < 2)
     {
         let val = Math.ceil(Math.random() * 6);
-        bot.sendMessage(
-        {
-            to: channelID,
-            message: "Roll = " + val
-        });
+        message.reply( "Roll = " + val);
     }
     else
     {
@@ -105,11 +92,7 @@ function app_roll(args, channelID)
             sum += r;
             logger.info("r = " + r);
         }
-        bot.sendMessage(
-        {
-            to: channelID,
-            message: "Roll = " + sum
-        }
+        message.reply( "Roll = " + sum);
         );
     }
 }
@@ -121,12 +104,7 @@ function app_echo(args, channelID)
     {
         str =  str + args[f] + " ";
     }
-    bot.sendMessage(
-    {
-        to: channelID,
-        message: str
-    }
-    );
+    message.reply(str);
 }
 
 function app_help(message)
