@@ -37,7 +37,7 @@ bot.on('message', async message =>
             app_echo(message);
             break;
         case '$help':
-            app_help(args, message);
+            app_help(message);
             break;
         case '$hello':
             message.reply('Yo!');
@@ -92,14 +92,11 @@ function app_roll(message)
     }
 }
 
-function app_echo(args, channelID)
+function app_echo(message)
 {
-    var str = "";
-    for (f = 1; f < args.length; f++)
-    {
-        str =  str + args[f] + " ";
-    }
-    message.reply(str);
+    const args = message.content.slice('$').trim().split(/ +/g);
+    const Msg  = args.join(" ");
+    message.reply(Msg);
 }
 
 function app_help(message)
