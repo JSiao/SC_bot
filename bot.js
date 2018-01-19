@@ -36,12 +36,12 @@ bot.on('message', function (user, userID, channelID, message, evt)
 {
     if (message.substring(0, 1) == '$')
     {
-        var args = message.substring(1).split(' ');
-        cmd = args[0];
-        args = args.splice(2);
+        var args = message.split(' ');
+        cmd  = args[0];
+        //args = args.splice(2);
         switch(cmd)
         {
-            case 'hello':
+            case '$hello':
                 bot.sendMessage(
                 {
                     to: channelID,
@@ -49,7 +49,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                 }
                 );
                 break;
-            case 'roll':
+            case '$roll':
                 logger.info("Argument [0] = " + args[0] + "\nArgument [1] = " + args[1]);
                 app_roll(args[1]);
                 break;
