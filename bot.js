@@ -69,10 +69,10 @@ bot.on('message', function (user, userID, channelID, message, evt)
 */
 });
 
-function app_roll(message)
+function app_roll(content)
 {
     var pos = content.indexOf(' ');
-    var dice = message.content.slice(pos+1, message.content.length);
+    var dice = content.slice(pos+1, content.length);
     var nums = dice.split('d', 1);
     if (nums[0] == "") nums[0] = 1;
     var array;
