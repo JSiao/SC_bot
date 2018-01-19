@@ -38,7 +38,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
     {
         var args = message.substring(1).split(' ');
         cmd = args[0];
-//      args = args.splice(1);
+        args = args.splice(2);
         switch(cmd)
         {
             case 'hello':
