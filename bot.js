@@ -49,6 +49,7 @@ bot.on('message', function (user, userID, channelID, message, evt)
                 );
                 break;
             case 'roll':
+                logger.info(message.content);
                 app_roll(message.content);
                 break;
         }
