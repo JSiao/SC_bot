@@ -84,7 +84,7 @@ function app_roll(message)
 {
     const args = message.content.slice('$').trim().split(/ +/g);
     logger.info(args);
-    var cmd  = args.split();
+    var cmd  = args.shift();
     if (args.length < 1)
     {
         result = Math.ceil(Math.random() * 6);
@@ -92,7 +92,7 @@ function app_roll(message)
     }
     else
     {
-        var dice = args.split();
+        var dice = args.shift();
         var nums = dice.split('d', 2);
         if (nums[0] == "") nums[0] = 1;
         var array = [];
