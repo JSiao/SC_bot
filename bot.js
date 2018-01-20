@@ -56,9 +56,6 @@ bot.on('message', async message =>
                 message.channel.send("No Variables to clear");
             }
             break;
-        case '$debug':
-            logs.info(message);
-            break;
         case '$display':
             app_display(message);
             break;
@@ -224,5 +221,6 @@ function app_push(message)
         global_array.splice(global_array.length, 0, Var);
     }
 }
+
 
 bot.login(token);
