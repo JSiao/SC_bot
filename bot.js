@@ -21,6 +21,7 @@ SC.init({
 const token = auth.token;
 
 var global_array = [];
+var result = false;;
 
 class BigVar
 {
@@ -67,6 +68,9 @@ bot.on('message', async message =>
         case '$hello':
             message.reply('Yo!');
             break;
+        case '$push':
+            app_push(message);
+            break;
         case '$rem':
             app_rem(message);
             break;
@@ -80,14 +84,15 @@ function app_roll(message)
 {
     const args = message.content.slice('$').trim().split(/ +/g);
     logger.info(args);
-    if (args.length < 2)
+    var cmd  = args.split();
+    if (args.length < 1)
     {
-        let val = Math.ceil(Math.random() * 6);
-        message.channel.send( "Roll = " + val);
+        result = Math.ceil(Math.random() * 6);
+        message.channel.send( "Roll = " + result);
     }
     else
     {
-        var dice = args[1];
+        var dice = args.split();
         var nums = dice.split('d', 2);
         if (nums[0] == "") nums[0] = 1;
         var array = [];
@@ -103,6 +108,7 @@ function app_roll(message)
             logger.info("r = " + r);
         }
         message.channel.send( "Roll = " + sum);
+        result = sum;
     }
 }
 
@@ -150,6 +156,16 @@ function app_rem(message)
     {
         value = Number(value);
     }
+    if (value.startsWith('"'))
+    {
+        let str = value.slice(1, value.length);
+        while (!value.endsWith('"'))
+        {
+            value = args.shift();
+            str = str + " " + value;
+        }
+        value = str.slice(0, value.length - 1);
+    }
     var flag = false;
     for (x = 0; x < global_array.length; x++)
     {
@@ -176,6 +192,33 @@ function app_display(message)
         msg = msg + global_array[x].name + ": " + global_array[x].value + "\n";
     }
     message.channel.send(msg);
+}
+
+function app_push(message)
+{
+    const args = message.content.slice('$').trim().split(/ +/g);
+    if (args.length < 2)
+    {
+        return;
+    }
+    cmd = args.shift();
+    variable = args.shift();
+    value    = result;
+    var flag = false;
+    for (x = 0; x < global_array.length; x++)
+    {
+        if (global_array[x].name == variable)
+        {
+            global_array[x].value = value;
+            flag = true;
+            break;
+        }
+    }
+    if (flag == false)
+    {
+        let Var = new BigVar(variable, value);
+        global_array.splice(global_array.length, 0, Var);
+    }
 }
 
 bot.login(token);
