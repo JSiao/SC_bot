@@ -163,6 +163,7 @@ function app_rem(message)
         {
             value = args.shift();
             str = str + " " + value;
+            logger.info(str);
         }
         value = str.slice(0, value.length - 1);
     }
