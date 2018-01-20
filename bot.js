@@ -165,7 +165,7 @@ function app_rem(message)
             str = str + " " + value;
             logger.info(str);
         }
-        value = str.slice(0, value.length - 1);
+        value = str.slice(0, str.length - 1);
     }
     var flag = false;
     for (x = 0; x < global_array.length; x++)
