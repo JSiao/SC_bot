@@ -142,7 +142,7 @@ function app_help(message, args)
 function app_rem(message, args)
 {
     //const args = message.content.slice('$').trim().split(/ +/g);
-    if (args.length < 3) 
+    if (args.length < 2) 
     {
         message.channel.send("Wow, you tottaly got that wrong, dude.");
         return;
