@@ -84,7 +84,6 @@ function app_roll(message, args)
 {
     //const args = message.content.slice('$').trim().split(/ +/g);
     logger.info(args);
-    var cmd  = args.shift();
     if (args.length < 1)
     {
         result = Math.ceil(Math.random() * 6);
@@ -115,7 +114,6 @@ function app_roll(message, args)
 function app_echo(message, args)
 {
     //const args = message.content.slice('$').trim().split(/ +/g);
-    args.shift();
     logger.info(args);
     for (x = 0; x < args.length; x++)
     {
@@ -149,7 +147,6 @@ function app_rem(message, args)
         message.channel.send("Wow, you tottaly got that wrong, dude.");
         return;
     }
-    cmd = args.shift();
     variable = args.shift();
     value    = args.shift();
     if (!isNaN(variable))
@@ -202,7 +199,6 @@ function app_push(message, args)
     {
         return;
     }
-    cmd = args.shift();
     variable = args.shift();
     value    = result;
     var flag = false;
