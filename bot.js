@@ -57,32 +57,32 @@ bot.on('message', async message =>
             }
             break;
         case '$display':
-            app_display(message);
+            app_display(message, args);
             break;
         case '$echo':
-            app_echo(message);
+            app_echo(message, args);
             break;
         case '$help':
-            app_help(message);
+            app_help(message, args);
             break;
         case '$hello':
             message.reply('Yo!');
             break;
         case '$push':
-            app_push(message);
+            app_push(message, args);
             break;
         case '$rem':
-            app_rem(message);
+            app_rem(message, args);
             break;
         case '$roll':
-            app_roll(message);
+            app_roll(message, args);
             break;
     }
 });
 
-function app_roll(message)
+function app_roll(message, args)
 {
-    const args = message.content.slice('$').trim().split(/ +/g);
+    //const args = message.content.slice('$').trim().split(/ +/g);
     logger.info(args);
     var cmd  = args.shift();
     if (args.length < 1)
@@ -112,9 +112,9 @@ function app_roll(message)
     }
 }
 
-function app_echo(message)
+function app_echo(message, args)
 {
-    const args = message.content.slice('$').trim().split(/ +/g);
+    //const args = message.content.slice('$').trim().split(/ +/g);
     args.shift();
     logger.info(args);
     for (x = 0; x < args.length; x++)
@@ -136,14 +136,14 @@ function app_echo(message)
     message.channel.send(Msg);
 }
 
-function app_help(message)
+function app_help(message, args)
 {
     message.channel.send( "Command List \n$roll [dice] - Rolls that given type of dice\n$echo [...] - Echoes to output");
 }
 
-function app_rem(message)
+function app_rem(message, args)
 {
-    const args = message.content.slice('$').trim().split(/ +/g);
+    //const args = message.content.slice('$').trim().split(/ +/g);
     if (args.length < 3) 
     {
         message.channel.send("Wow, you tottaly got that wrong, dude.");
@@ -184,7 +184,7 @@ function app_rem(message)
     }
 }
 
-function app_display(message)
+function app_display(message, args)
 {
     logger.info(global_array);
     let msg = "";
@@ -195,9 +195,9 @@ function app_display(message)
     message.channel.send(msg);
 }
 
-function app_push(message)
+function app_push(message, args)
 {
-    const args = message.content.slice('$').trim().split(/ +/g);
+    //const args = message.content.slice('$').trim().split(/ +/g);
     if (args.length < 2)
     {
         return;
