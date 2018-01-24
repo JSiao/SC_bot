@@ -10,13 +10,6 @@ logger.add(logger.transports.Console, {
 logger.level = 'debug';
 
 var bot = new Discord.Client(); 
-/*
-SC.init({
-    id: '',
-    secret: '',
-    uri:
-});
-*/
 
 const token = auth.token;
 
@@ -42,6 +35,12 @@ bot.on('message', async message =>
     if (message.author.bot) return;
     const args = message.content.slice('$').trim().split(/ +/g);
     logger.info(args);
+    result = commander(message, args);
+});
+
+function commander(messages, args)
+{
+    let ret_val;
     const cmd  = args.shift();
     switch(cmd)
     {
@@ -55,38 +54,44 @@ bot.on('message', async message =>
             {
                 message.channel.send("No Variables to clear");
             }
+            ret_val = result;
             break;
         case '$display':
-            app_display(message, args);
+            ret_val = app_display(message, args);
             break;
         case '$echo':
             app_echo(message, args);
+            ret_val = result;
             break;
         case '$help':
             app_help(message, args);
+            ret_val = result;
             break;
         case '$hello':
             message.reply('Yo!');
+            ret_val = result;
             break;
         case '$push':
             app_push(message, args);
+            ret_val = result;
             break;
         case '$rem':
-            app_rem(message, args);
+            ret_val = app_rem(message, args);
             break;
         case '$roll':
-            app_roll(message, args);
+            ret_val = app_roll(message, args);
             break;
     }
-});
+    return ret_val;
+}
 
 function app_roll(message, args)
 {
-    //const args = message.content.slice('$').trim().split(/ +/g);
+    let ret_val;
     logger.info(args);
     if (args.length < 1)
     {
-        result = Math.ceil(Math.random() * 6);
+        ret_val = Math.ceil(Math.random() * 6);
         message.channel.send( "Roll = " + result);
     }
     else
@@ -107,13 +112,13 @@ function app_roll(message, args)
             logger.info("r = " + r);
         }
         message.channel.send( "Roll = " + sum);
-        result = sum;
+        ret_val = sum;
     }
+    return ret_val;
 }
 
 function app_echo(message, args)
 {
-    //const args = message.content.slice('$').trim().split(/ +/g);
     logger.info(args);
     for (x = 0; x < args.length; x++)
     {
@@ -130,7 +135,7 @@ function app_echo(message, args)
             }
         }
     }
-    const Msg  = args.join(" ");
+    const Msg = args.join(" ");
     message.channel.send(Msg);
 }
 
