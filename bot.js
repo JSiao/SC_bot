@@ -38,7 +38,7 @@ bot.on('message', async message =>
     result = commander(message, args);
 });
 
-function commander(messages, args)
+function commander(message, args)
 {
     let ret_val;
     const cmd  = args.shift();
