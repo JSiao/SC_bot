@@ -127,7 +127,7 @@ function app_echo(message, args)
             logger.info(args[x] + " is a variable");
             for (y = 0; y < global_array.length; y++)
             {
-                if (("%" + global_array[y].name) == args[y])
+                if (("%" + global_array[y].name) == args[x])
                 {
                     args[x] = global_array[y].value;
                     break;
