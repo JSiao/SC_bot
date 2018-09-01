@@ -188,7 +188,10 @@ function app_rem(message, args)
 
 function app_display(message, args)
 {
-    logger.info(global_array);
+    if (global_array != false)
+    {
+        logger.info(global_array);
+    }
     let msg = "";
     for (x = 0; x < global_array.length; x++)
     {
