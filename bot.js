@@ -188,14 +188,19 @@ function app_rem(message, args)
 
 function app_display(message, args)
 {
-    if (global_array != false)
+    msg = "";
+    if (global_array.length == 0)
+    {
+        msg = "<No Variables>";
+        return;
+    }
+    else
     {
         logger.info(global_array);
-    }
-    let msg = "";
-    for (x = 0; x < global_array.length; x++)
-    {
-        msg = msg + global_array[x].name + ": " + global_array[x].value + "\n";
+        for (x = 0; x < global_array.length; x++)
+        {
+            msg = msg + global_array[x].name + ": " + global_array[x].value + "\n";
+        }
     }
     message.channel.send(msg);
 }
@@ -203,7 +208,7 @@ function app_display(message, args)
 function app_push(message, args)
 {
     //const args = message.content.slice('$').trim().split(/ +/g);
-    if (args.length < 2)
+    if (args.length < 1)
     {
         return;
     }
