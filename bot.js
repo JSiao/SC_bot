@@ -92,7 +92,7 @@ function app_roll(message, args)
     if (args.length < 1)
     {
         ret_val = Math.ceil(Math.random() * 6);
-        message.channel.send( "Roll = " + result);
+        message.channel.send( "Roll = " + ret_val);
     }
     else
     {
